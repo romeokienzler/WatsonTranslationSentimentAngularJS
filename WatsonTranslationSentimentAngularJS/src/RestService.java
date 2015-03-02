@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/RestService")
 public class RestService extends HttpServlet {
+	private static final String REST_ENDPOINT = "http://4olaf.mybluemix.net";
 	private static final long serialVersionUID = 1L;
 
     /**
@@ -34,7 +35,7 @@ public class RestService extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		URL url = new URL("http://4olaf.mybluemix.net/olli?message="+URLEncoder.encode(request.getParameter("message")));
+		URL url = new URL(REST_ENDPOINT+"/olli?message="+URLEncoder.encode(request.getParameter("message")));
 
 	    URLConnection conn = url.openConnection();
 	    conn.connect();
